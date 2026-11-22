@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>📚 Biblioteca</h1>
+    <nav>
+        <button id="navPublica" data-tela="publica">Livros</button>
+        <button id="navLivros" data-tela="livros">Gerenciar Livros (Funcionário)</button>
+        <button id="navEmprestimos" data-tela="emprestimos">Gerenciar Empréstimos (Usuário)</button>
+    </nav>
+    <div id="sessao"></div>
+</header>
+
+<main>
+    <section id="publica">
+        <h2>Livros do acervo</h2>
+        <input id="busca" placeholder="Buscar por título">
+        <div id="cards" class="grid"></div>
+    </section>
+
+    <section id="login" class="painel" hidden>
+        <h2>Entrar</h2>
+        <div class="abas">
+            <button type="button" id="abaUsuario" class="aba ativa">Usuário</button>
+            <button type="button" id="abaFuncionario" class="aba">Funcionário</button>
+        </div>
+        <input id="registro" type="number" placeholder="Número de registro">
+        <input id="senha" type="password" placeholder="Senha">
+        <button id="btnLogin">Entrar</button>
+        <p id="linhaCadastro">Ainda não tem conta? <a href="#" id="irCadastro">Cadastre-se</a></p>
+    </section>
+
+    <section id="cadastro" class="painel" hidden>
+        <h2>Criar conta</h2>
+        <form id="formCadastro">
+            <input name="registro" type="number" placeholder="Número de registro" required>
+            <input name="nome" placeholder="Nome completo" required>
+            <label>Data de nascimento
+                <input name="dataNascimento" type="date" required></label>
+            <input name="telefone" placeholder="Telefone" required>
+            <input name="senha" type="password" placeholder="Senha" required>
+            <button>Cadastrar</button>
+        </form>
+        <p>Já tem conta? <a href="#" id="irLogin">Entrar</a></p>
+    </section>
+
+    <section id="livros" hidden>
+        <h2>Gerenciar Livros</h2>
+        <div class="bloco">
+            <h3>Cadastrar livro</h3>
+            <form id="formLivro">
+                <input name="codigo" type="number" placeholder="Código" required>
+                <input name="titulo" placeholder="Título" required>
+                <input name="autor" placeholder="Autor" required>
+                <input name="anoPublicacao" type="number" placeholder="Ano" required>
+                <button>Cadastrar</button>
+            </form>
+        </div>
+        <div class="bloco">
+            <h3>Cadastrar exemplar</h3>
+            <form id="formExemplar">
+                <input name="codigoLivro" type="number" placeholder="Código do livro" required>
+                <input name="codigo" type="number" placeholder="Código do exemplar" required>
+                <button>Cadastrar</button>
+            </form>
+        </div>
+        <div class="bloco">
+            <h3>Consultar exemplar</h3>
+            <form id="formBuscaExemplar">
+                <input name="codigo" type="number" placeholder="Código do exemplar" required>
+                <button>Buscar</button>
+            </form>
+            <div id="resultadoExemplar"></div>
+        </div>
+        <h3>Usuários cadastrados</h3>
+        <div class="rolagem">
+            <table>
+                <thead><tr><th>Registro</th><th>Nome</th><th>E-mail</th><th>Telefone</th></tr></thead>
+                <tbody id="listaUsuarios"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="emprestimos" hidden>
+        <h2>Meus empréstimos</h2>
+        <form id="formEmprestimo">
+            <input name="codigoExemplar" type="number" placeholder="Código do exemplar" required>
+            <button>Emprestar</button>
+        </form>
+        <div class="rolagem">
+            <table>
+                <thead>
+                    <tr><th>Livro</th><th>Exemplar</th><th>Empréstimo</th>
+                        <th>Devolução prevista</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody id="listaEmprestimos"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <p id="msg"></p>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
